@@ -1,5 +1,6 @@
 <template>
-  <div
+  <component
+    :is="wrapTag"
     v-observe-visibility="handleVisibilityChange"
     class="vue-recycle-scroller"
     :class="{
@@ -70,7 +71,7 @@
     </div>
 
     <ResizeObserver @notify="handleResize" />
-  </div>
+  </component>
 </template>
 
 <script>
@@ -150,6 +151,11 @@ export default {
     skipHover: {
       type: Boolean,
       default: false,
+    },
+
+    wrapTag: {
+      type: String,
+      default: 'div',
     },
 
     listTag: {
